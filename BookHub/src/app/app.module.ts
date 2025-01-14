@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { AboutUsComponent } from './Public-Components/about-us/about-us.component';
 import { HomeComponent } from './Public-Components/home/home.component';
 import { SharedModule } from './shared/shared.module';
+import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 
 @NgModule({
   declarations: [
@@ -19,7 +20,8 @@ import { SharedModule } from './shared/shared.module';
     SharedModule
   ],
   providers: [
-    provideClientHydration(withEventReplay())
+    provideClientHydration(withEventReplay()),
+    provideAnimationsAsync()
   ],
   bootstrap: [AppComponent]
 })
