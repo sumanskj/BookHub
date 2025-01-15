@@ -7,17 +7,25 @@ import { AboutUsComponent } from './Public-Components/about-us/about-us.componen
 import { HomeComponent } from './Public-Components/home/home.component';
 import { SharedModule } from './shared/shared.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
+import { BooksModule } from './books/books.module';
+import { AllBooksComponent } from './books/components/all-books/all-books.component';
+import { BookDetailsComponent } from './books/components/book-details/book-details.component';
+import { AuthModule } from './auth/auth.module';
 
 @NgModule({
   declarations: [
     AppComponent,
     AboutUsComponent,
-    HomeComponent
+    HomeComponent,
+    AllBooksComponent,
+    BookDetailsComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    SharedModule
+    SharedModule,
+    BooksModule,
+    AuthModule
   ],
   providers: [
     provideClientHydration(withEventReplay()),

@@ -2,5 +2,20 @@
     flex: 1 1 auto;
   }
   .light-theme{
-    background-color: blue;
+    background-color: rgb(188, 229, 249);
+    
+  }
+  .primary{
+    color: blue;
+  }
+  .danger{
+    color: red;
+  }
+
+  .text-brown{
+    color: brown;
+  }
+  
+  button{
+    margin: 3px;
   }
