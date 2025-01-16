@@ -25,7 +25,7 @@ import { AuthModule } from './auth/auth.module';
     AppRoutingModule,
     SharedModule,
     BooksModule,
-    AuthModule
+    AuthModule,
   ],
   providers: [
     provideClientHydration(withEventReplay()),
