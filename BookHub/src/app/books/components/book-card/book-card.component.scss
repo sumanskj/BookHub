@@ -1,0 +1,19 @@
+.book-card {
+    max-width: 350px;
+    margin: 2px;
+  }
+  
+  .example-header-image {
+    // background-image: url('https://material.angular.io/assets/img/examples/shiba1.jpg');
+    background-image: url('https://picsum.photos/id/24/4855/1803');
+    background-size: cover;
+    
+  }
+  .container{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: left;
+  }
+  .container>*{
+flex: 1 1 350px;
+  }
