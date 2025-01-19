@@ -5,13 +5,15 @@ import { HeaderComponent } from './components/header/header.component';
 import { FooterComponent } from './components/footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from './material.module';
+import { AuthorComponent } from './components/author/author.component';
 
 
 @NgModule({
   declarations: [
     NotFoundComponent,
     HeaderComponent,
-    FooterComponent
+    FooterComponent,
+    AuthorComponent
   ],
   imports: [
     CommonModule,    
@@ -21,7 +23,8 @@ import { MaterialModule } from './material.module';
   exports:[
     HeaderComponent,
     FooterComponent,
-    MaterialModule
+    MaterialModule,
+    AuthorComponent
   ]
 })
 export class SharedModule { }

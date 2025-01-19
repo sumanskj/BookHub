@@ -1,1 +1,5 @@
 <p>home works!</p>
+<button #clickmebutton mat-raised-button (click)="btnClick()">Click Me</button>
+<p>Button Click Count is : {{count}}</p>
+<p>data comming from child : {{_testService.myData}}</p>
+<app-author [dataCounter]="count"></app-author>
