@@ -3,6 +3,10 @@ export class BookModel{
     public title:string;
     public description: string;
     public author:string;
+    public pages:number;
+    public price:number;
+    public published:boolean;
+    public publishDate:Date;
     
 //     private _author:string;
 

@@ -1,0 +1,65 @@
+<h2>add New books</h2>
+{{bookTitle.errors | json}}
+<form #myform='ngForm' (ngSubmit)="addBook()" class="book-form">
+    <mat-form-field appearance="outline">
+        <mat-label>Id</mat-label>
+        <input #bookId="ngModel" matInput name="id" placeholder="Enter Book Id" [(ngModel)]="model.id" required>
+        <mat-icon matSuffix>info</mat-icon>
+        <mat-hint *ngIf="bookId.invalid && bookId.touched">Please Enter Book Id</mat-hint>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Title</mat-label>
+        <input #bookTitle="ngModel" matInput name="title" placeholder="Please Enter Book Title" [(ngModel)]="model.title" required minlength="3">
+        <mat-icon matSuffix>title</mat-icon>
+        <mat-hint *ngIf="bookTitle.invalid && bookTitle.touched">
+            <span *ngIf="bookTitle.errors?.required">Please Enter Book Title</span>
+            <span *ngIf="bookTitle.errors?.minlength">Please Enter Book Title with minimum 3 charecter and maximun 10 charecter</span>
+        </mat-hint>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Description</mat-label>
+        <input #bookDesc="ngModel" matInput name="description" placeholder="Please Enter Book Description" [(ngModel)]="model.description">
+        <mat-icon matSuffix>description</mat-icon>
+        <mat-hint [hidden]="bookDesc.valid">Please Enter Book Description</mat-hint>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Author</mat-label>
+        <input #bookAuth="ngModel" matInput name="author" placeholder="Please Enter Book Author" [(ngModel)]="model.author" required>
+        <mat-icon matSuffix>person_2</mat-icon>
+        <mat-hint *ngIf="bookAuth.invalid && bookAuth.touched">Please Enter Book Author</mat-hint>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>No of Pages</mat-label>
+        <input #bookPage="ngModel" matInput type="number" name="pages" placeholder="Please Enter Book Author" [(ngModel)]="model.pages" min="10" max="100">
+        <mat-icon matSuffix>123</mat-icon>
+        <mat-hint [hidden]="bookPage.valid">Please Enter mo of pages</mat-hint>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Choose Book Price</mat-label>
+        <mat-select  name="price" [(ngModel)]="model.price">
+            <mat-option *ngFor="let price of prices" [value]="price.value">
+                {{price.viewValue}}
+            </mat-option>
+        </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="outline">
+        <mat-label>Choose a date</mat-label>
+        <input matInput [matDatepicker]="picker" name="publishDate" [(ngModel)]="model.publishDate">
+        <mat-hint>MM/DD/YYYY</mat-hint>
+        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+    </mat-form-field>
+
+    <mat-label>Is Book Published?</mat-label>
+    <mat-slide-toggle name="published" [(ngModel)]="model.published">Slide me!</mat-slide-toggle>
+    <!-- <mat-form-field appearance="outline">
+        <mat-label>No of Pages</mat-label>
+        <mat-slide-toggle name="price" ngModel>Slide Toggle Checked</mat-slide-toggle>
+    </mat-form-field> -->
+    <!-- <input type="number" name="id" placeholder="Enter Id" ngModel><br><br>
+    <input type="text" name="title" placeholder="Enter Title" ngModel><br><br>
+    <input type="text" name="description" placeholder="Enter Description" ngModel><br><br>
+    <input type="text" name="author" placeholder="Enter Author" ngModel><br><br> -->
+    <button mat-raised-button [disabled]="myform.invalid" color="primary">Save</button>
+    <!-- <h4>{{myform.value | json}}</h4>  -->
+</form>

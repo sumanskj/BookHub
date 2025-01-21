@@ -8,6 +8,9 @@ import { AllBooksComponent } from './components/all-books/all-books.component';
 import { BookDetailsComponent } from './components/book-details/book-details.component';
 import { MaterialModule } from '../shared/material.module';
 import { BookCardComponent } from './components/book-card/book-card.component';
+import { AddBooksComponent } from './components/add-books/add-books.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AddBookReactiveComponent } from './components/add-book-reactive/add-book-reactive.component';
 
 
 @NgModule({
@@ -16,12 +19,16 @@ import { BookCardComponent } from './components/book-card/book-card.component';
     AllBooksComponent,
     BookDetailsComponent,
     RecentBooksComponent,
-    BookCardComponent
+    BookCardComponent,
+    AddBooksComponent,
+    AddBookReactiveComponent
   ],
   imports: [
     CommonModule,
     BooksRoutingModule,    
-    MaterialModule
+    MaterialModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   exports:[BookCardComponent],
   providers:[BookService]

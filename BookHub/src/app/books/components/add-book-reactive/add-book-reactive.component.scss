@@ -1,0 +1,15 @@
+.book-form{
+    display: flex;
+    flex-direction: column;
+    padding: 20px;  
+    // margin-top: 20px;  
+}
+.book-hint{
+    margin-bottom: 20px; 
+}
+.mat-hint{
+    color: red;
+}
+.mat-mdc-hint{
+    color: red;
+}

@@ -29,7 +29,7 @@ export class AllBooksComponent implements OnInit {
     //   obj.author = a.author;
     //   this.books.push(obj);
     // })
-    console.log(this.books);
+    
   }
   displayedColumns: string[] = ['Id', 'title', 'description', 'author'];
   dataSource = new MatTableDataSource<BookModel>(this.books);
