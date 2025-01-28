@@ -11,6 +11,7 @@ import { BookCardComponent } from './components/book-card/book-card.component';
 import { AddBooksComponent } from './components/add-books/add-books.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AddBookReactiveComponent } from './components/add-book-reactive/add-book-reactive.component';
+import { SharedModule } from "../shared/shared.module";
 
 
 @NgModule({
@@ -25,11 +26,12 @@ import { AddBookReactiveComponent } from './components/add-book-reactive/add-boo
   ],
   imports: [
     CommonModule,
-    BooksRoutingModule,    
+    BooksRoutingModule,
     MaterialModule,
     FormsModule,
-    ReactiveFormsModule
-  ],
+    ReactiveFormsModule,
+    SharedModule
+],
   exports:[BookCardComponent],
   providers:[BookService]
 })

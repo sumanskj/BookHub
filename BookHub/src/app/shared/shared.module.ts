@@ -7,6 +7,7 @@ import { RouterModule } from '@angular/router';
 import { MaterialModule } from './material.module';
 import { AuthorComponent } from './components/author/author.component';
 import { HttpClientModule } from '@angular/common/http';
+import { BoolPipePipe } from './pipes/bool-pipe.pipe';
 
 
 
@@ -17,7 +18,8 @@ import { HttpClientModule } from '@angular/common/http';
     NotFoundComponent,
     HeaderComponent,
     FooterComponent,
-    AuthorComponent
+    AuthorComponent,
+    BoolPipePipe
   ],
   imports: [
     CommonModule,    
@@ -28,7 +30,7 @@ import { HttpClientModule } from '@angular/common/http';
     HeaderComponent,
     FooterComponent,
     MaterialModule,
-    AuthorComponent,HttpClientModule
+    AuthorComponent,HttpClientModule,BoolPipePipe
   ]
 })
 export class SharedModule { }

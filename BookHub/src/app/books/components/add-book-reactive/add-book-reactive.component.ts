@@ -19,8 +19,8 @@ export class AddBookReactiveComponent implements OnInit {
   ];
   public addBookForm: FormGroup;
 
-  constructor(private _bookService: BookService,private _formBuilder:FormBuilder) {
-    
+  constructor(private _bookService: BookService, private _formBuilder: FormBuilder) {
+
   }
   ngOnInit(): void {
     this.initForm();
@@ -30,12 +30,12 @@ export class AddBookReactiveComponent implements OnInit {
       // console.log(x);
       // console.log(titleControl.errors);
 
-      
+
     })
   }
-  private initForm():void{
+  private initForm(): void {
     this.addBookForm = this._formBuilder.group({
-      id: ['',Validators.required],
+      id: ['', Validators.required],
       title: ['', [Validators.required, Validators.minLength(3), Validators.maxLength(10)]],
       description: ['', Validators.required],
       // author: ['', Validators.required],
@@ -50,6 +50,9 @@ export class AddBookReactiveComponent implements OnInit {
   public addBook() {
     if (this.addBookForm.valid) {
       this._bookService.addBook(this.addBookForm.value)
+        .subscribe(x => {
+          console.log(x);
+        });
       alert('A new book has been added successfully')
     }
     else {
@@ -57,12 +60,12 @@ export class AddBookReactiveComponent implements OnInit {
     }
   }
   private validateTitleControl(titleControl: FormControl): void {
-    this.titleErrorMessage='';
+    this.titleErrorMessage = '';
     if (titleControl.errors && (titleControl.touched || titleControl.dirty)) {
       if (titleControl.errors?.required) {
         this.titleErrorMessage = 'Please Enter Title';
-      }else if (titleControl.errors?.minLength) {      
-        this.titleErrorMessage='Minimum Length should be '+ titleControl.errors?.minLength?.requiredLength;
+      } else if (titleControl.errors?.minLength) {
+        this.titleErrorMessage = 'Minimum Length should be ' + titleControl.errors?.minLength?.requiredLength;
         // this.titleErrorMessage = 'Minimum Length should be 10';
       }
     }
@@ -80,7 +83,7 @@ export class AddBookReactiveComponent implements OnInit {
   }
   private getAuthorControl(): UntypedFormGroup {
     return this._formBuilder.group({
-      fullName: '',
+      name: '',
       address: ''
     });
   }

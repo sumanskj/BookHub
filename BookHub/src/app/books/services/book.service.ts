@@ -94,7 +94,8 @@ export class BookService {
 
     ]
   }
-  public addBook(bookModel:BookModel):void{
-    this.allbooks.push(bookModel);
+
+  public addBook(bookModel:BookModel):Observable<BookModel>{
+    return this._httpClient.post<BookModel>('https://localhost:7293/api/Book',bookModel);
   }
 }
