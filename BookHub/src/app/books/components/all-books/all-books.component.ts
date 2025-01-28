@@ -19,7 +19,7 @@ export class AllBooksComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.books=this.bookService.getAllBook()
+    this.getAllBooks();
     // const allbooks = this.bookService.getAllBook();
     // allbooks.forEach(a => {
     //   var obj = new BookModel();
@@ -29,7 +29,7 @@ export class AllBooksComponent implements OnInit {
     //   obj.author = a.author;
     //   this.books.push(obj);
     // })
-    
+
   }
   displayedColumns: string[] = ['Id', 'title', 'description', 'author'];
   dataSource = new MatTableDataSource<BookModel>(this.books);
@@ -39,6 +39,13 @@ export class AllBooksComponent implements OnInit {
 
   ngAfterViewInit() {
     this.dataSource.paginator = this.paginator;
+  }
+
+  private getAllBooks(): void {
+    this.bookService.getAllBook().subscribe(books => {
+      this.books = books
+      // console.log(books);
+    })
   }
 }
 

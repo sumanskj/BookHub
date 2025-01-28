@@ -9,6 +9,7 @@ import { SharedModule } from './shared/shared.module';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { BooksModule } from './books/books.module';
 import { AuthModule } from './auth/auth.module';
+import { provideHttpClient, withFetch } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -22,11 +23,12 @@ import { AuthModule } from './auth/auth.module';
     AppRoutingModule,
     SharedModule,
     BooksModule,
-    AuthModule,
+    AuthModule
   ],
   providers: [
     provideClientHydration(withEventReplay()),
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    provideHttpClient(withFetch())
   ],
   bootstrap: [AppComponent]
 })

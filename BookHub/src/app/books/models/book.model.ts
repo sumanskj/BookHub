@@ -1,3 +1,5 @@
+import { AuthorModel } from "./author.model";
+
 export class BookModel{
     public id:number;
     public title:string;
@@ -7,6 +9,7 @@ export class BookModel{
     public price:number;
     public published:boolean;
     public publishDate:Date;
+    public authors: AuthorModel[];
     
 //     private _author:string;
 

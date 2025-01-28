@@ -6,6 +6,10 @@ import { FooterComponent } from './components/footer/footer.component';
 import { RouterModule } from '@angular/router';
 import { MaterialModule } from './material.module';
 import { AuthorComponent } from './components/author/author.component';
+import { HttpClientModule } from '@angular/common/http';
+
+
+
 
 
 @NgModule({
@@ -18,13 +22,13 @@ import { AuthorComponent } from './components/author/author.component';
   imports: [
     CommonModule,    
     RouterModule,
-    MaterialModule
+    MaterialModule,HttpClientModule
   ],
   exports:[
     HeaderComponent,
     FooterComponent,
     MaterialModule,
-    AuthorComponent
+    AuthorComponent,HttpClientModule
   ]
 })
 export class SharedModule { }

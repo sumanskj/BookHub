@@ -1,12 +1,14 @@
 import { Injectable } from '@angular/core';
 import { BookModel } from '../models/book.model';
+import { HttpClient } from '@angular/common/http';
+import { Observable } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class BookService {
 
-  constructor() { }
+  constructor(private _httpClient:HttpClient) { }
   private allbooks  = [
     {
       "id": 1,
@@ -65,8 +67,8 @@ export class BookService {
   ];
 
 
-  public getAllBook(): any[] {
-    return this.allbooks;
+  public getAllBook(): Observable<BookModel[]> {
+    return this._httpClient.get<BookModel[]>('https://localhost:7293/api/Book/AllBook');
   }
 
   public getRecentBooks(): any[] {

@@ -1,33 +1,54 @@
 <p>add-book-reactive works!</p>
-<form #myForm="ngForm" (ngSubmit)="addBook()" class="book-form" [formGroup]="addBookForm">
+{{addBookForm.value | json}}
+<form (ngSubmit)="addBook()" class="book-form" [formGroup]="addBookForm">
     <mat-form-field appearance="outline">
         <mat-label>Id</mat-label>
         <input matInput name="id" placeholder="Enter Book Id" formControlName="id">
-        <mat-icon matSuffix>info</mat-icon>        
+        <mat-icon matSuffix>info</mat-icon>
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>Title</mat-label>
         <input matInput name="title" placeholder="Please Enter Book Title" formControlName="title">
-        <mat-icon matSuffix>title</mat-icon>        
+        <mat-icon matSuffix>title</mat-icon>
+        <mat-hint> {{titleErrorMessage}} </mat-hint>
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>Description</mat-label>
         <input matInput name="description" placeholder="Please Enter Book Description" formControlName="description">
-        <mat-icon matSuffix>description</mat-icon>        
+        <mat-icon matSuffix>description</mat-icon>
+        <!-- <mat-hint>{{titleErrorMessage}}</mat-hint> -->        
     </mat-form-field>
-    <mat-form-field appearance="outline">
-        <mat-label>Author</mat-label>
-        <input matInput name="author" placeholder="Please Enter Book Author" formControlName="author">
-        <mat-icon matSuffix>person_2</mat-icon>
-    </mat-form-field>
+    <!-- <div>
+        <mat-form-field appearance="outline">
+            <mat-label>Author</mat-label>
+            <input matInput name="author" placeholder="Please Enter Book Author" formControlName="author">
+            <mat-icon matSuffix>person_2</mat-icon>
+        </mat-form-field>
+    </div> -->
+    <div formArrayName="authors">
+        <div *ngFor="let auth of authors.controls; let i=index;">
+            <mat-form-field appearance="fill" [formGroupName]="i">
+                <mat-label>Author</mat-label>
+                <input matInput name="author" placeholder="Author fullName" formControlName="fullName">
+                <mat-icon matSuffix>person</mat-icon>
+            </mat-form-field>
+            <mat-form-field appearance="fill" [formGroupName]="i">
+                <mat-label>Address</mat-label>
+                <input matInput name="address" placeholder="Author address" formControlName="address">
+                <mat-icon matSuffix>person</mat-icon>
+            </mat-form-field>
+            <button type="button" mat-button (click)="removeAuthor(i)">Remove</button>
+        </div>
+        <button type="button" (click)="addMoreAuthor()" mat-button>Add more</button>
+    </div>
     <mat-form-field appearance="outline">
         <mat-label>No of Pages</mat-label>
-        <input matInput type="number" name="pages" placeholder="Please Enter Book Author" formControlName="Pages">
+        <input matInput type="number" name="pages" placeholder="Please Enter no of pages" formControlName="pages">
         <mat-icon matSuffix>123</mat-icon>
     </mat-form-field>
     <mat-form-field appearance="outline">
         <mat-label>Choose Book Price</mat-label>
-        <mat-select  name="price" formControlName="price">
+        <mat-select name="price" formControlName="price">
             <mat-option *ngFor="let price of prices" [value]="price.value">
                 {{price.viewValue}}
             </mat-option>
@@ -44,5 +65,5 @@
 
     <mat-label>Is Book Published?</mat-label>
     <mat-slide-toggle name="published" formControlName="published">Slide me!</mat-slide-toggle>
-    <button mat-raised-button color="primary">Save</button>
+    <button type="submit" [disabled]="addBookForm.invalid" mat-raised-button color="primary">Save</button>
 </form>
